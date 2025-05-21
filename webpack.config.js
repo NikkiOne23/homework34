@@ -20,6 +20,7 @@ export default {
         exclude: /node_modules/,
         use: 'babel-loader',
       },
+
       {
         test: /\.css$/i,
         use: [
@@ -27,9 +28,21 @@ export default {
           'css-loader',
         ],
       },
+
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name].[contenthash][ext]',
+        },
+      },
+
+      {
+        test: /\.(woff2?|ttf|otf|eot)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name].[contenthash][ext]',
+        },
       },
     ],
   },
